@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경기도 날씨 정보</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-cloud-sun"></i> 경기도 날씨</h1>
+            <p class="subtitle">실시간 기상 정보를 확인하세요</p>
+        </header>
+
+        <div class="city-selector">
+            <select id="citySelect" class="select-box">
+                <option value="">시/군을 선택하세요</option>
+                <option value="수원시">수원시</option>
+                <option value="고양시">고양시</option>
+                <option value="용인시">용인시</option>
+                <option value="성남시">성남시</option>
+                <option value="부천시">부천시</option>
+                <option value="화성시">화성시</option>
+                <option value="안산시">안산시</option>
+                <option value="안양시">안양시</option>
+                <option value="평택시">평택시</option>
+                <option value="시흥시">시흥시</option>
+            </select>
+            <button id="getWeatherBtn" class="get-weather-btn">
+                <i class="fas fa-search"></i> 날씨 조회
+            </button>
+        </div>
+
+        <div id="loadingSpinner" class="loading hidden">
+            <div class="spinner"></div>
+            <p>날씨 정보를 가져오는 중...</p>
+        </div>
+
+        <div id="weatherInfo" class="weather-info hidden">
+            <div class="weather-header">
+                <h2 id="cityName"></h2>
+                <p id="updateTime"></p>
+            </div>
+            
+            <div class="weather-main">
+                <div class="temperature-section">
+                    <div class="temp-display">
+                        <span id="temperature">--</span>°C
+                    </div>
+                    <div class="weather-icon">
+                        <i id="weatherIcon" class="fas fa-sun"></i>
+                    </div>
+                </div>
+                
+                <div class="weather-status">
+                    <h3 id="weatherCondition">--</h3>
+                </div>
+            </div>
+
+            <div class="weather-details">
+                <div class="detail-item">
+                    <i class="fas fa-tint"></i>
+                    <span class="label">습도</span>
+                    <span id="humidity" class="value">--%</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-wind"></i>
+                    <span class="label">풍속</span>
+                    <span id="windSpeed" class="value">-- m/s</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="label">강수확률</span>
+                    <span id="rainProb" class="value">--%</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-thermometer-half"></i>
+                    <span class="label">체감온도</span>
+                    <span id="feelsLike" class="value">--°C</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="errorMessage" class="error-message hidden">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>날씨 정보를 가져올 수 없습니다. 다시 시도해주세요.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
